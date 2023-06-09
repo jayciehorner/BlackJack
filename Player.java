@@ -1,40 +1,25 @@
 package chestysCasino;
-
 import java.util.ArrayList;
 
+
 public class Player extends Person{
-	
-	//private String name;
-	//email or id  ??? serializable
-	private int bet;
-	private int bank;
-	private Hand hand;
-	private int deposit; 
-	
-	ArrayList<Player> players = new ArrayList<Player>();
-	//Create 6 players
-	//max size 6 
-	
-	Player dealer = new Player();
-	
+	private int bet = 0;
+	private int bank = 0;
+//	private Hand hands;
+//	private int deposit = 0; 
+//	private ArrayList<Card> hand;
 	
 	public Player() {
 		
 	}
 	
-	//setName = in.next();
-	//bank setup to initial deposit
-	//or just do setBank = in.next
-	//deposit option resets bank 
-	//so it become 
-	
-	public void addFunds() {
-		bank += deposit;
+	public void addFunds(int x) {
+		bank += x;
 	}
 	
-	public void cashOut() {
-		bank = 0;
-	}
+//	public void cashOut() {
+//		bank = 0;
+//	}
 	
 	public void win() {
 		bank += bet;
@@ -47,7 +32,8 @@ public class Player extends Person{
 	}
 	
 	public void blackJack() {
-		bank += bet * (3/2);
+		bank += bet * 1.5;
+		//changed from (3/2) to 1.5
 		bet = 0;
 	}
 	
@@ -63,34 +49,34 @@ public class Player extends Person{
 	public void doubleDown() {
 		bet *= 2;
 		//players.
-		//pulls one card 
+		//pulls one card
 		//so deck.next();
 		//bet = 0;
 	}
-	
-	public void stay() {
-		for(int i = 0; i < players.size(); i++) {
-			players.get(i);
-		}
+	public int getBank() {
+		return bank;
+	}
+	public void setBank(int bank) {
+		this.bank = bank;
+	}
+	public int getBet() {
+		return bet;
+	}
+	public void setBet(int bet) {
+		this.bet = bet;
 	}
 	
-	public void playerTurn() {
-		for(int i = 0; i < players.size(); i++) {
-			players.get(i);
-		}
-	}
-	
-
 	
 	public void insurance() {
 		
 		//if(dealer.hasAce)
-		//create hasAce method 
-		//both for this and calculateHandValue method in Hand class 
-		//dealer showing ace 
+		//create hasAce method
+		//both for this and calculateHandValue method in Hand class
+		//dealer showing ace
 		//pays 2/1
 		//half players bet
 		//new bet?
 	}
+
 
 }

@@ -11,10 +11,13 @@ public class House {
 		
 	}
 	
-	public void deal() {
-		//2 cards to each player and dealer 
-		//dealer only one visible	
-	}
+//	public void deal(Deck deck) {
+//		Hand.add(deck.pullRandom());
+//		//2 cards to each player and dealer 
+//		//dealer only one visible
+//		
+//		
+//	}
 	
 	public void payBets() {
 		
@@ -22,10 +25,6 @@ public class House {
 	
 	public void collectBets() {
 		
-	}
-	
-	public void endOfHand() {
-			
 	}
 	
 	//Dealer ace check
@@ -37,5 +36,17 @@ public class House {
 	//}else{
 	// 
 	//}
+	
+	
+	
+//	Dealer dealer = new Dealer();
+	//array of players
+	// earnings
+	//hit method
+	//stay 
+	
+	//tables
+	
+	
 
 }

@@ -17,11 +17,11 @@ public class Card {
 		return value;
 	}
 
-	public int getValue() {
-		return value.ordinal() + 2;
+	public Value getValue() {
+		return this.value;
 	}
 	  public String toString(){
-	        return "\n"+ value + " of "+ suit;
+	        return "\n"+ this.value + " of "+ this.suit;
 	    }
 
 	public enum Suit {
@@ -29,7 +29,7 @@ public class Card {
 	}
 
 	public enum Value {
-		TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE, BIGACE;
+		TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE;
 
 	}
 	
@@ -47,8 +47,7 @@ public class Card {
 		case JACK: return 10;
 		case QUEEN: return 10;
 		case KING: return 10;
-		case ACE: return 1;
-		case BIGACE: return 11;
+		case ACE: return 11;
 		default: return 0;
 		}
 	}

@@ -1,24 +1,14 @@
 package chestysCasino;
 
+import java.util.ArrayList;
+
 public class Person {
 	
-	//dealer is-a person
-	//player is-a person
-	
-	//person has-a hand
-	//each hand has a hit stay ... methods 
-	
 	private String name;
-	private Hand hand;
+	private ArrayList<Card> hand;
 	
 	
 	public Person() {
-		
-	}
-	
-	public Person(String name, Hand hand) {
-		this.name = name;
-		this.hand = new Hand();
 		
 	}
 	
@@ -28,24 +18,24 @@ public class Person {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Hand getHand() {
+	public ArrayList<Card> getHand() {
 		return hand;
 	}
-	public void setHand(Hand hand) {
+	public void setHand(ArrayList<Card> hand) {
 		this.hand = hand;
 	}
 	
-//	public void hit() {
-//		
-//	}
-//	
-//	public void stay() {
-//		
-//	}
-//	
-//	public void push() {
-//		
-//	}
+	public void hit() {
+		
+	}
+	
+	public void stay() {
+		
+	}
+	
+	public void push() {
+		
+	}
 	
 
 }

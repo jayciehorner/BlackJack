@@ -1,23 +1,33 @@
 package chestysCasino;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Collections;
 import java.util.Random;
 
-public class Deck extends Card{
+import chestysCasino.Card.Suit;
+import chestysCasino.Card.Value;
+
+public class Deck{
 	
-	public Deck(Suit suit, Value value) {
-		super(suit, value);
-		// TODO Auto-generated constructor stub
+	@Override
+	public String toString() {
+		return "Deck= " + deck + ", random= " + random + ", pulledCards= " + pulledCards;
 	}
+	private ArrayList<Card> deck;
+
+	  public Deck() {
+	        this.deck = new ArrayList<Card>(); 
+	        for (Suit cardSuit : Suit.values()) {
+	            for (Value cardValue : Value.values()) {                   
+	                this.deck.add(new Card(cardSuit, cardValue));  	
+	            }
+	        }
+	        shuffle();
+	    }
 	private Random random;
-	// ArrayList<Card> cards;
 	ArrayList<Card> pulledCards;
 	private static List<Card> cards = new ArrayList<Card>();
 
 	public void reset() {
-		pulledCards.clear();
 		cards.clear();
 		// Creating all possible cards
 		for (Suit s : Suit.values()) {
@@ -30,7 +40,7 @@ public class Deck extends Card{
 
 	}
 
-	public void CardsDeck() {
+	public void cardsDeck() {
 		random = new Random();
 		pulledCards = new ArrayList<Card>();
 		cards = new ArrayList<Card>(Suit.values().length * Value.values().length);
@@ -38,26 +48,15 @@ public class Deck extends Card{
 
 	}
 
-	/**
-	 * get a random card, removing it from the pack
-	 * 
-	 * @return
-	 */
 	public Card pullRandom() {
 		if (cards.isEmpty())
 			return null;
-
 		Card res = cards.remove(randInt(0, cards.size() - 1));
 		if (res != null)
 			pulledCards.add(res);
 		return res;
 	}
 
-	/**
-	 * Get a random cards, leaves it inside the pack
-	 * 
-	 * @return
-	 */
 	public Card getRandom() {
 		if (cards.isEmpty())
 			return null;
@@ -66,18 +65,7 @@ public class Deck extends Card{
 		return res;
 	}
 
-	/**
-	 * Returns a pseudo-random number between min and max, inclusive. The difference
-	 * between min and max can be at most <code>Integer.MAX_VALUE - 1</code>.
-	 *
-	 * @param min Minimum value
-	 * @param max Maximum value. Must be greater than min.
-	 * @return Integer between min and max, inclusive.
-	 * @see java.util.Random#nextInt(int)
-	 */
 	public int randInt(int min, int max) {
-		// nextInt is normally exclusive of the top value,
-		// so add 1 to make it inclusive
 		int randomNum = random.nextInt((max - min) + 1) + min;
 		return randomNum;
 	}
@@ -85,10 +73,31 @@ public class Deck extends Card{
 	public boolean isEmpty() {
 		return cards.isEmpty();
 	}
-	//////////// Get help with shuffle... Collection versus arrayList
-	public static void shuffle() {
-	    Collections.shuffle(cards); 
+	 public void shuffle() {
+	        ArrayList<Card> tempDeck = new ArrayList<Card>();               
+	        Random random = new Random();                                   
+	        int randomCardIndex = 0;                                        
+	        int noOfCards = this.deck.size();                                                
+	        for (int i = 0; i < noOfCards; i++) {
+	            randomCardIndex = random.nextInt((this.deck.size()-1 - 0) + 1) + 0;
+	            tempDeck.add(this.deck.remove(randomCardIndex));               
+	        }
+	       this.deck = tempDeck;
+	    }
+
+	public ArrayList<Card> getDeck() {
+		return deck;
 	}
+
+	public void setDeck(ArrayList<Card> deck) {
+		this.deck = deck;
+	}
+	 public Card draw() {
+	        return deck.remove(0);
+	    }
+	 
+	 public void addCard(Card addCard) {
+		 this.deck.add(addCard);
+	 }
 	
-	//////////////
 }
